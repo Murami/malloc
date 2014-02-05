@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:29:40 2014 anthony guerot
-** Last update Wed Feb  5 14:30:50 2014 guerot_a
+** Last update Wed Feb  5 17:02:38 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -13,16 +13,19 @@
 static void	merge_block(t_block *block)
 {
   t_block*	curr;
+  int		size;
 
   while (curr->prev->free == TRUE)
     curr = curr->prev;
-  block->size = 0;
+  size = -HEADER_SIZE;
   while (curr->next->free == TRUE)
     {
-      block->size += curr->size + HEADER_SIZE;
+      size += curr->size + HEADER_SIZE;
       curr = curr->next;
     }
-  block->size -= HEADER_SIZE;
+  if (size <= 0)
+    return;
+  block->size = size;
   block->next = curr;
   curr->prev = block;
 }
