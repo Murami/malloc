@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Wed Feb  5 17:17:01 2014 pinon
+** Last update Wed Feb  5 17:20:21 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -15,27 +15,11 @@ t_block		blocks_list = {&blocks_list, &blocks_list, 0, FALSE, {0}};
 size_t		align_size(size_t size)
 {
   size_t new;
-  
+
   new = 2;
   while (new < size)
     new = new << 1;
   return (new);
-}
-
-static void	split_block(t_block* block, size_t size)
-{
-  t_block*	new_block;
-
-  if (block->size <= HEADER_SIZE + size)
-    return;
-  new_block = (t_block*)(block->data + size);
-  new_block->prev = block;
-  new_block->next = block->next;
-  new_block->size = block->size - size;
-  new_block->free = TRUE;
-  block->next->prev = new_block;
-  block->next = new_block;
-  block->size = size;
 }
 
 static t_block*	get_first_fit(size_t size)
