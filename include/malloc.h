@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:38:02 2014 anthony guerot
-// Last update Wed Feb  5 17:08:25 2014 pinon
+** Last update Wed Feb  5 17:16:27 2014 pinon
 */
 
 #include <unistd.h>
@@ -29,3 +29,11 @@ typedef struct		s_block
 #define HEADER_SIZE	(sizeof(t_block) - 1)
 
 extern t_block		blocks_list;
+
+t_block*	get_block(void *data);
+void		_free(void *ptr);
+void		split_block(t_block *block, size_t size);
+
+void		free(void *ptr);
+void*		malloc(size_t size);
+void*		realloc(void *ptr, size_t size);
