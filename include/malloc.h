@@ -5,10 +5,12 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:38:02 2014 anthony guerot
-** Last update Wed Feb  5 17:16:27 2014 pinon
+** Last update Wed Feb  5 17:21:54 2014 guerot_a
 */
 
+#define _BSD_SOURCE
 #include <unistd.h>
+
 
 /*
 ** TODO : shrink_heap
