@@ -5,17 +5,19 @@
 ## Login   <pinon_a@epitech.net>
 ## 
 ## Started on  Mon Feb  3 15:40:11 2014 pinon
-## Last update Wed Feb  5 16:55:50 2014 pinon
+## Last update Wed Feb  5 18:02:47 2014 pinon
 ##
 
 LIBNAME=	libmy_malloc_$(HOSTTYPE).so
 
 LINKNAME=	libmy_malloc.so
 
-SRC=		src/malloc.c	\
-		src/free.c	\
-		src/realloc.c	\
-		src/get_block.c
+SRC=		src/malloc.c		\
+		src/free.c		\
+		src/realloc.c		\
+		src/get_block.c		\
+		src/raise.c		\
+		src/split_block.c	\
 
 OBJ=		$(SRC:.c=.o)
 
@@ -28,13 +30,13 @@ CFLAGS=		-Wall		\
 		-Wextra		\
 		-ansi		\
 		-pedantic	\
+		-fPIC		\
 		-I include
 
 all:		$(LIBNAME)
 
 $(LIBNAME):	$(OBJ)
-		gcc -shared -Wl, -soname	\
-		-o $(LIBNAME) $(OBJ) -lc
+		$(CC) -shared -o $(LIBNAME) $(OBJ) -lc
 		ln -T -f $(LIBNAME) $(LINKNAME)
 
 clean:
@@ -48,4 +50,4 @@ fclean_one:
 
 re:		fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean re fclean_one

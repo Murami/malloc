@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:29:40 2014 anthony guerot
-** Last update Wed Feb  5 17:02:38 2014 guerot_a
+** Last update Wed Feb  5 18:09:43 2014 pinon
 */
 
 #include "malloc.h"
@@ -45,5 +45,6 @@ void		_free(void *ptr)
 
 void		free(void *ptr)
 {
+  /* printf("Our free is here !\n"); */
   _free(ptr);
 }

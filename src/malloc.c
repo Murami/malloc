@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Wed Feb  5 17:20:21 2014 guerot_a
+** Last update Wed Feb  5 18:09:26 2014 pinon
 */
 
 #include "malloc.h"
@@ -47,7 +47,7 @@ static t_block*	new_alloc(size_t size)
   block = (t_block*)(sbrk((intptr_t)aligned_size));
   block->size = aligned_size - HEADER_SIZE;
   block->free = TRUE;
-  block->next = &block_list;
+  block->next = &blocks_list;
   block->prev = blocks_list.prev;
   blocks_list.prev = block;
   block->prev->next = block;
@@ -58,10 +58,12 @@ void*		malloc(size_t size)
 {
   t_block*	block;
 
+  printf("it's our malloc here !\n");
   block = get_first_fit(size);
   if (block == NULL)
     block = new_alloc(size);
   block->free = FALSE;
   split_block(block, size);
+  printf("Data returned\n");
   return (block->data);
 }
