@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Thu Feb  6 09:46:16 2014 guerot_a
+** Last update Thu Feb  6 11:25:20 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -30,11 +30,7 @@ static t_block*	get_first_fit(int size)
   while (curr != &blocks_list)
     {
       if (curr->size >= size && curr->free)
-	{
-	  /* printf("First fit for size : %d\n", size); */
-	  /* printf("Block of size : %d\n", curr->size); */
-	  return (curr);
-	}
+	return (curr);
       curr = curr->next;
     }
   return (NULL);
@@ -45,11 +41,9 @@ static t_block*	new_alloc(size_t size)
   t_block*	block;
   size_t	aligned_size;
 
-  /* printf("New alloc:\n"); */
   if (size == 0)
     return (NULL);
   aligned_size = align_size(size + HEADER_SIZE);
-  /* printf("Aligned size : %d\n", (int)aligned_size); */
   block = (t_block*)(sbrk((intptr_t)aligned_size));
   block->size = aligned_size - HEADER_SIZE;
   block->free = TRUE;
@@ -64,15 +58,10 @@ void*		malloc(size_t size)
 {
   t_block*	block;
 
-  printf("malloc of %d\n", (int)size);
   block = get_first_fit(size);
   if (block == NULL)
     block = new_alloc(size);
   block->free = FALSE;
   split_block(block, size);
-  /* printf("Data returned\n--------\n"); */
-  /* printf("\n\n"); */
-  /* dump_block(); */
-  /* printf("\n\n"); */
   return (block->data);
 }
