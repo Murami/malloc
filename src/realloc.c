@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:28:13 2014 anthony guerot
-** Last update Wed Feb  5 19:26:54 2014 guerot_a
+** Last update Thu Feb  6 09:50:42 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -29,7 +29,7 @@ static void	merge_block_range(t_block* start, t_block* end)
   end->next->prev = start;
 }
 
-static int	extand_block(t_block* block, int size)
+/*static*/ int	extand_block(t_block* block, int size)
 {
   t_block*	curr;
   int		extanded_size;
@@ -54,14 +54,14 @@ void*		realloc(void *ptr, size_t size)
 {
   t_block*	 block;
 
-  /* printf("Our realloc is here !\n"); */
+  printf("Our realloc is here !\n");
   if (ptr == NULL)
     return (malloc(size));
   if (size == 0)
     free(ptr);
   block = get_block(ptr);
-  if (extand_block(block, size))
-    return (block);
+  /* if (extand_block(block, size)) */
+  /*   return (block); */
   _free(ptr);
   block = memcpy(malloc(size), ptr, block->size);
   return (block);

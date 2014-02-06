@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 18:25:22 2014 anthony guerot
-** Last update Wed Feb  5 19:26:19 2014 guerot_a
+** Last update Thu Feb  6 09:44:17 2014 guerot_a
 */
 
 #include <stdio.h>
@@ -18,7 +18,6 @@ void		dump_block()
   curr = blocks_list.next;
   while (curr != &blocks_list)
     {
-      printf("header is %d\n", HEADER_SIZE);
       printf("*//----\\\\*\n");
       printf("*        *\n");
       printf("*%5d   *\n", (int)curr->size);

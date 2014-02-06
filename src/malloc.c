@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Wed Feb  5 19:26:38 2014 guerot_a
+** Last update Thu Feb  6 09:46:16 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -31,8 +31,8 @@ static t_block*	get_first_fit(int size)
     {
       if (curr->size >= size && curr->free)
 	{
-	  printf("First fit for size : %d\n", size);
-	  printf("Block of size : %d\n", curr->size);
+	  /* printf("First fit for size : %d\n", size); */
+	  /* printf("Block of size : %d\n", curr->size); */
 	  return (curr);
 	}
       curr = curr->next;
@@ -64,7 +64,7 @@ void*		malloc(size_t size)
 {
   t_block*	block;
 
-  /* printf("malloc of %d\n", (int)size); */
+  printf("malloc of %d\n", (int)size);
   block = get_first_fit(size);
   if (block == NULL)
     block = new_alloc(size);
