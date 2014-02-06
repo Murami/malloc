@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Thu Feb  6 15:15:21 2014 guerot_a
+** Last update Thu Feb  6 16:21:13 2014 pinon
 */
 
 #include "malloc.h"
@@ -18,7 +18,7 @@ size_t		align_size(size_t size)
 
   new = 2;
   while (new <= size)
-    new = new << 1;
+    new = new * 2;
   return (new);
 }
 
@@ -29,7 +29,7 @@ static t_block*	get_first_fit(int size)
   curr = blocks_list.next;
   while (curr != &blocks_list)
     {
-      if (curr->size >= size && curr->free)
+      if (curr->size >= size && curr->free == TRUE)
 	{
 	  printf(" first fit");
 	  return (curr);
@@ -67,7 +67,7 @@ void*		malloc(size_t size)
   if (block == NULL)
     block = new_alloc(size);
   block->free = FALSE;
-  split_block(block, size);
+  /* split_block(block, size); */
   /* printf("\n\n"); */
   /* dump_block(); */
   /* printf("\n\n"); */
