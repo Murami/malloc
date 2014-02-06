@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:29:40 2014 anthony guerot
-** Last update Thu Feb  6 14:30:29 2014 guerot_a
+** Last update Thu Feb  6 15:20:23 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -32,9 +32,14 @@ static void	merge_block(t_block *block)
   curr->prev = block;
 }
 
-void		_free(void *ptr)
+void		free(void *ptr)
 {
   t_block*	block;
+
+  printf("\033[30;01mfree of %p", ptr);
+  printf("\033[00m\n");
+  /* dump_block(); */
+  /* printf("\n\n"); */
 
   if (ptr == NULL)
     return;
@@ -46,13 +51,4 @@ void		_free(void *ptr)
     }
   block->free = TRUE;
   merge_block(block);
-}
-
-void		free(void *ptr)
-{
-  printf("\033[30;01mfree of %p", ptr);
-  printf("\033[00m\n");
-  /* dump_block(); */
-  /* printf("\n\n"); */
-  _free(ptr);
 }
