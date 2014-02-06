@@ -5,12 +5,12 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 17:07:18 2014 anthony guerot
-** Last update Wed Feb  5 18:03:27 2014 pinon
+** Last update Wed Feb  5 18:49:43 2014 guerot_a
 */
 
 #include "malloc.h"
 
-void		split_block(t_block* block, size_t size)
+void		split_block(t_block* block, int size)
 {
   t_block*	new_block;
 
@@ -19,7 +19,7 @@ void		split_block(t_block* block, size_t size)
   new_block = (t_block*)(block->data + size);
   new_block->prev = block;
   new_block->next = block->next;
-  new_block->size = block->size - size;
+  new_block->size = block->size - (HEADER_SIZE + size);
   new_block->free = TRUE;
   block->next->prev = new_block;
   block->next = new_block;

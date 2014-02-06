@@ -5,7 +5,7 @@
 ## Login   <pinon_a@epitech.net>
 ## 
 ## Started on  Mon Feb  3 15:40:11 2014 pinon
-## Last update Wed Feb  5 18:02:47 2014 pinon
+## Last update Wed Feb  5 18:32:36 2014 guerot_a
 ##
 
 LIBNAME=	libmy_malloc_$(HOSTTYPE).so
@@ -18,6 +18,7 @@ SRC=		src/malloc.c		\
 		src/get_block.c		\
 		src/raise.c		\
 		src/split_block.c	\
+		src/dump_block.c
 
 OBJ=		$(SRC:.c=.o)
 
@@ -31,7 +32,8 @@ CFLAGS=		-Wall		\
 		-ansi		\
 		-pedantic	\
 		-fPIC		\
-		-I include
+		-I include	\
+		-g3
 
 all:		$(LIBNAME)
 

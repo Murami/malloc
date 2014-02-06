@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:38:02 2014 anthony guerot
-** Last update Wed Feb  5 18:05:35 2014 pinon
+** Last update Wed Feb  5 18:51:11 2014 guerot_a
 */
 
 #define _BSD_SOURCE
@@ -22,11 +22,11 @@
 
 #define raise(msg) (_raise(msg, __FILE__, __LINE__))
 
-typedef struct		s_block
+typedef struct __attribute__((packed))	s_block
 {
   struct s_block*	next;
   struct s_block*	prev;
-  size_t		size;
+  int			size;
   int			free;
   char			data[1];
 }			t_block;
@@ -37,8 +37,9 @@ extern t_block		blocks_list;
 
 t_block*	get_block(void *data);
 void		_free(void *ptr);
-void		split_block(t_block *block, size_t size);
+void		split_block(t_block *block, int size);
 void		_raise(char*, char*, unsigned int);
+void		dump_block();
 
 void		free(void *ptr);
 void*		malloc(size_t size);

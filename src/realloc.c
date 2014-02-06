@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:28:13 2014 anthony guerot
-** Last update Wed Feb  5 18:08:02 2014 pinon
+** Last update Wed Feb  5 19:26:54 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -54,7 +54,7 @@ void*		realloc(void *ptr, size_t size)
 {
   t_block*	 block;
 
-  printf("Our realloc is here !\n");
+  /* printf("Our realloc is here !\n"); */
   if (ptr == NULL)
     return (malloc(size));
   if (size == 0)
