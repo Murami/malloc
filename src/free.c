@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:29:40 2014 anthony guerot
-** Last update Thu Feb  6 12:36:02 2014 guerot_a
+** Last update Thu Feb  6 14:30:29 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -41,7 +41,7 @@ void		_free(void *ptr)
   block = get_block(ptr);
   if (block == NULL)
     {
-      printf("Invalid Pointer");
+      printf("warning: invalid pointer\n");
       return;
     }
   block->free = TRUE;
@@ -50,5 +50,9 @@ void		_free(void *ptr)
 
 void		free(void *ptr)
 {
+  printf("\033[30;01mfree of %p", ptr);
+  printf("\033[00m\n");
+  /* dump_block(); */
+  /* printf("\n\n"); */
   _free(ptr);
 }

@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Thu Feb  6 12:58:58 2014 guerot_a
+** Last update Thu Feb  6 14:41:11 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -30,7 +30,10 @@ static t_block*	get_first_fit(int size)
   while (curr != &blocks_list)
     {
       if (curr->size >= size && curr->free)
-	return (curr);
+	{
+	  printf(" first fit");
+	  return (curr);
+	}
       curr = curr->next;
     }
   return (NULL);
@@ -41,6 +44,7 @@ static t_block*	new_alloc(size_t size)
   t_block*	block;
   size_t	aligned_size;
 
+  printf(" new alloc");
   if (size == 0)
     return (NULL);
   aligned_size = align_size(size + HEADER_SIZE);
@@ -58,10 +62,15 @@ void*		malloc(size_t size)
 {
   t_block*	block;
 
+  printf("\033[31;01mmalloc of size [%10d]", (int)size);
   block = get_first_fit(size);
   if (block == NULL)
     block = new_alloc(size);
   block->free = FALSE;
   split_block(block, size);
+  /* printf("\n\n"); */
+  /* dump_block(); */
+  /* printf("\n\n"); */
+  printf(" return %p - [%10lu]\033[00m\n", block->data, (unsigned long int)block->data);
   return (block->data);
 }
