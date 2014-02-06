@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:35:44 2014 anthony guerot
-** Last update Wed Feb  5 17:45:11 2014 pinon
+** Last update Thu Feb  6 12:37:48 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -18,7 +18,7 @@ t_block*	get_block(void* data)
   while (curr != &blocks_list)
     {
       if (curr->data == data)
-	return (curr);
+	  return (curr);
       curr = curr->next;
     }
   return (NULL);
