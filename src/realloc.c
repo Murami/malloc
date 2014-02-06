@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:28:13 2014 anthony guerot
-** Last update Thu Feb  6 09:50:42 2014 guerot_a
+** Last update Thu Feb  6 10:16:25 2014 pinon
 */
 
 #include "malloc.h"
@@ -25,8 +25,8 @@ static void	merge_block_range(t_block* start, t_block* end)
   if (size <= 0)
     return;
   start->size = size;
-  start->next = end->next;
-  end->next->prev = start;
+  start->next = end;
+  end->prev = start;
 }
 
 /*static*/ int	extand_block(t_block* block, int size)
@@ -41,7 +41,7 @@ static void	merge_block_range(t_block* start, t_block* end)
       extanded_size += curr->size + HEADER_SIZE;
       if (extanded_size >= size)
 	{
-	  merge_block_range(block, curr);
+	  merge_block_range(block, curr->next);
 	  split_block(block, size);
 	  return (TRUE);
 	}
@@ -60,8 +60,8 @@ void*		realloc(void *ptr, size_t size)
   if (size == 0)
     free(ptr);
   block = get_block(ptr);
-  /* if (extand_block(block, size)) */
-  /*   return (block); */
+  if (extand_block(block, size))
+    return (block);
   _free(ptr);
   block = memcpy(malloc(size), ptr, block->size);
   return (block);
