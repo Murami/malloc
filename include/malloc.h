@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:38:02 2014 anthony guerot
-** Last update Fri Feb  7 14:24:23 2014 guerot_a
+** Last update Fri Feb  7 14:40:08 2014 pinon
 */
 
 #define _BSD_SOURCE
@@ -20,7 +20,7 @@
 #define FALSE 	0
 #define TRUE	1
 
-#define DBG_START	1410
+#define DBG_START	1803
 
 #define raise(msg) (_raise(msg, __FILE__, __LINE__))
 

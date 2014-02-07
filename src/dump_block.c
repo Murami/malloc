@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 18:25:22 2014 anthony guerot
-** Last update Fri Feb  7 14:09:22 2014 guerot_a
+** Last update Fri Feb  7 14:54:07 2014 pinon
 */
 
 #include <stdio.h>
@@ -19,17 +19,16 @@ void		dump_block()
   printf("<------------------------->\n");
   while (curr != &blocks_list)
     {
-      printf("*//----------\\\\*\n");
-      printf("*              *\n");
-      printf("*%14d*\n", (int)curr->size);
-      printf("*%14p*\n", (void*)curr->prev);
-      printf("*%14p*\n", (void*)curr->next);
+      printf("size :%16d\t", (int)curr->size);
+      printf("prev block:%16p\t", (void*)curr->prev);
+      printf("prev data:%16p\t", curr->prev->data);
+      printf("next block:%16p\t", (void*)curr->next);
+      printf("next data:%16p\t", curr->next->data);
       if (curr->free)
-  	printf("*     FREE     *\n");
+  	printf("FREE\t");
       else
-  	printf("*     ALLO     *\n");
-      printf("*              *\n");
-      printf("*\\\\----------//*\n");
+  	printf("ALLO\t");
+      printf("\n");
       curr = curr->next;
     }
   printf("<------------------------->\n");

@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:28:13 2014 anthony guerot
-** Last update Fri Feb  7 14:19:28 2014 guerot_a
+** Last update Fri Feb  7 14:40:40 2014 pinon
 */
 
 #include "malloc.h"
@@ -16,7 +16,7 @@ void*		realloc(void *ptr, size_t size)
   int		old_size;
 
   dbg_start++;
-  printf("\033[35;01mralloc of size [%10d] for %p", (int)size, ptr);
+  printf("\033[35;01mralloc of size [%10d] for %p\n", (int)size, ptr);
   if (ptr == NULL)
     return (malloc(size));
   if (size == 0)
