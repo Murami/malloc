@@ -5,12 +5,13 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Thu Feb  6 16:48:35 2014 pinon
+** Last update Fri Feb  7 14:19:12 2014 guerot_a
 */
 
 #include "malloc.h"
 
 t_block		blocks_list = {&blocks_list, &blocks_list, 0, FALSE, {0}};
+int		dbg_start = 0;
 
 size_t		align_size(size_t size)
 {
@@ -64,6 +65,7 @@ void*		malloc(size_t size)
 {
   t_block*	block;
 
+  dbg_start++;
   printf("\033[31;01mmalloc of size [%10d]", (int)size);
   block = get_first_fit(size);
   if (block == NULL)
@@ -72,9 +74,8 @@ void*		malloc(size_t size)
     return (NULL);
   block->free = FALSE;
   split_block(block, size);
-  /* printf("\n\n"); */
-  /* dump_block(); */
-  /* printf("\n\n"); */
   printf(" return %p - [%10lu]\033[00m\n", block->data, (unsigned long int)block->data);
+  if (dbg_start > DBG_START)
+    dump_block();
   return (block->data);
 }

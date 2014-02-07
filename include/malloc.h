@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:38:02 2014 anthony guerot
-** Last update Wed Feb  5 18:51:11 2014 guerot_a
+** Last update Fri Feb  7 14:24:23 2014 guerot_a
 */
 
 #define _BSD_SOURCE
@@ -20,6 +20,8 @@
 #define FALSE 	0
 #define TRUE	1
 
+#define DBG_START	1410
+
 #define raise(msg) (_raise(msg, __FILE__, __LINE__))
 
 typedef struct __attribute__((packed))	s_block
@@ -33,6 +35,7 @@ typedef struct __attribute__((packed))	s_block
 
 #define HEADER_SIZE	((int)(sizeof(t_block) - 1))
 
+extern int		dbg_start;
 extern t_block		blocks_list;
 
 t_block*	get_block(void *data);

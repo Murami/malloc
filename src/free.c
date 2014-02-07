@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:29:40 2014 anthony guerot
-** Last update Thu Feb  6 17:01:30 2014 pinon
+** Last update Fri Feb  7 14:19:06 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -36,6 +36,7 @@ void		free(void *ptr)
 {
   t_block*	block;
 
+  dbg_start++;
   printf("\033[30;01mfree of %p", ptr);
   printf("\033[00m\n");
   /* dump_block(); */
@@ -51,4 +52,6 @@ void		free(void *ptr)
     }
   block->free = TRUE;
   merge_block(block);
+  if (dbg_start > DBG_START)
+    dump_block();
 }
