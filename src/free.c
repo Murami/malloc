@@ -36,8 +36,8 @@ void		free(void *ptr)
   t_block*	block;
 
   dbg_start++;
-  printf("\033[30;01mfree of %p", ptr);
-  printf("\033[00m\n");
+  /* printf("\033[30;01mfree of %p", ptr); */
+  /* printf("\033[00m\n"); */
   /* dump_block(); */
   /* printf("\n\n"); */
 

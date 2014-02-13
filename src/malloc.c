@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Thu Feb 13 15:43:01 2014 pinon
+** Last update Thu Feb 13 15:54:17 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -15,12 +15,8 @@ int		dbg_start = 0;
 
 size_t		align_size(size_t size)
 {
-  size_t new;
-
-  new = 2;
-  while (new <= size)
-    new = new * 2;
-  return (new);
+  size = (size / getpagesize() + 1) * getpagesize();
+  return (size);
 }
 
 static t_block*	get_first_fit(int size)
@@ -32,7 +28,7 @@ static t_block*	get_first_fit(int size)
     {
       if (curr->size >= size && curr->free == TRUE)
 	{
-	  printf(" first fit");
+	  /* printf(" first fit"); */
 	  return (curr);
 	}
       curr = curr->next;
@@ -45,7 +41,7 @@ static t_block*	new_alloc(size_t size)
   t_block*	block;
   size_t	aligned_size;
 
-  printf(" new alloc");
+  /* printf(" new alloc"); */
   if (size == 0)
     return (NULL);
   aligned_size = align_size(size + HEADER_SIZE);
@@ -64,7 +60,7 @@ void*		malloc(size_t size)
   t_block*	block;
 
   dbg_start++;
-  printf("\033[31;01mmalloc of size [%10d]", (int)size);
+  /* printf("\033[31;01mmalloc of size [%10d]", (int)size); */
   block = get_first_fit(size);
   if (block == NULL)
     block = new_alloc(size);
@@ -72,7 +68,7 @@ void*		malloc(size_t size)
     return (NULL);
   block->free = FALSE;
   split_block(block, size);
-  printf(" return %p\033[00m\n", block->data);
+  /* printf(" return %p\033[00m\n", block->data); */
   if (dbg_start > DBG_START)
     dump_block();
   return (block->data);
