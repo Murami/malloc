@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Fri Feb  7 14:19:12 2014 guerot_a
+** Last update Fri Feb  7 15:42:46 2014 pinon
 */
 
 #include "malloc.h"
@@ -50,8 +50,6 @@ static t_block*	new_alloc(size_t size)
     return (NULL);
   aligned_size = align_size(size + HEADER_SIZE);
   block = (t_block*)(sbrk((intptr_t)aligned_size));
-  if (block == (void*)-1)
-    return (NULL);
   block->size = aligned_size - HEADER_SIZE;
   block->free = TRUE;
   block->next = &blocks_list;
