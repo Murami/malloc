@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Fri Feb  7 15:42:46 2014 pinon
+** Last update Thu Feb 13 15:43:01 2014 pinon
 */
 
 #include "malloc.h"
@@ -72,7 +72,7 @@ void*		malloc(size_t size)
     return (NULL);
   block->free = FALSE;
   split_block(block, size);
-  printf(" return %p - [%10lu]\033[00m\n", block->data, (unsigned long int)block->data);
+  printf(" return %p\033[00m\n", block->data);
   if (dbg_start > DBG_START)
     dump_block();
   return (block->data);

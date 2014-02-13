@@ -1,11 +1,11 @@
 /*
-** malloc.h in /home/guerot_a/Documents/DepotsGit/PSU_2013_malloc
-**
-** Made by anthony guerot
-** Login   <guerot_a@epitech.net>
-**
-** Started on  Wed Feb  5 14:38:02 2014 anthony guerot
-** Last update Fri Feb  7 15:38:01 2014 pinon
+** malloc.h for  in /home/pinon_a/rendu/PSU_2013_malloc
+** 
+** Made by pinon
+** Login   <pinon_a@epitech.net>
+** 
+** Started on  Thu Feb 13 15:43:31 2014 pinon
+** Last update Thu Feb 13 15:43:41 2014 pinon
 */
 
 #define _BSD_SOURCE
@@ -20,7 +20,7 @@
 #define FALSE 	0
 #define TRUE	1
 
-#define DBG_START     50
+#define DBG_START	0
 
 #define raise(msg) (_raise(msg, __FILE__, __LINE__))
 
@@ -47,3 +47,4 @@ void		dump_block();
 void		free(void *ptr);
 void*		malloc(size_t size);
 void*		realloc(void *ptr, size_t size);
+void*		calloc(size_t nmenb, size_t size);

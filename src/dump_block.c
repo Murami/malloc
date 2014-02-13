@@ -5,10 +5,9 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 18:25:22 2014 anthony guerot
-** Last update Fri Feb  7 14:54:07 2014 pinon
+** Last update Fri Feb  7 15:11:23 2014 guerot_a
 */
 
-#include <stdio.h>
 #include "malloc.h"
 
 void		dump_block()
@@ -17,6 +16,7 @@ void		dump_block()
 
   curr = blocks_list.next;
   printf("<------------------------->\n");
+  printf("< break : %p >\n", sbrk(0));
   while (curr != &blocks_list)
     {
       printf("size :%16d\t", (int)curr->size);
