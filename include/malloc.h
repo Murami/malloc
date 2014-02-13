@@ -5,17 +5,18 @@
 ** Login   <pinon_a@epitech.net>
 **
 ** Started on  Thu Feb 13 15:43:31 2014 pinon
-** Last update Thu Feb 13 15:49:04 2014 guerot_a
+** Last update Thu Feb 13 17:51:39 2014 pinon
 */
 
 #define _BSD_SOURCE
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <pthread.h>
 
 /*
 ** TODO : shrink_heap
- */
+*/
 
 #define FALSE 	0
 #define TRUE	1
@@ -37,6 +38,7 @@ typedef struct __attribute__((packed))	s_block
 
 extern int		dbg_start;
 extern t_block		blocks_list;
+extern pthread_mutex_t	mutex;
 
 t_block*	get_block(void *data);
 void		_free(void *ptr);

@@ -35,22 +35,24 @@ void		free(void *ptr)
 {
   t_block*	block;
 
+  pthread_mutex_lock(&mutex);
   dbg_start++;
-  /* printf("\033[30;01mfree of %p", ptr); */
-  /* printf("\033[00m\n"); */
-  /* dump_block(); */
-  /* printf("\n\n"); */
-
   if (ptr == NULL)
-    return;
-  block = get_block(ptr);
+    {
+      pthread_mutex_unlock(&mutex);
+      return;
+    }
+  /*block = get_block(ptr);
   if (block == NULL)
     {
       printf("warning: free invalid pointer\n");
+      pthread_mutex_unlock(&mutex);
       return;
-    }
+      }*/
+  block = (void*)((char*)ptr - HEADER_SIZE);
   block->free = TRUE;
   merge_block(block);
   if (dbg_start > DBG_START)
     dump_block();
+  pthread_mutex_unlock(&mutex);
 }

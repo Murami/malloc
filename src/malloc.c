@@ -5,13 +5,14 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Thu Feb 13 15:54:17 2014 guerot_a
+** Last update Thu Feb 13 17:52:00 2014 pinon
 */
 
 #include "malloc.h"
 
-t_block		blocks_list = {&blocks_list, &blocks_list, 0, FALSE, {0}};
-int		dbg_start = 0;
+t_block		blocks_list	= {&blocks_list, &blocks_list, 0, FALSE, {0}};
+int		dbg_start	= 0;
+pthread_mutex_t	mutex		= PTHREAD_MUTEX_INITIALIZER;
 
 size_t		align_size(size_t size)
 {
@@ -59,17 +60,20 @@ void*		malloc(size_t size)
 {
   t_block*	block;
 
+  pthread_mutex_lock(&mutex);
   dbg_start++;
-  /* printf("\033[31;01mmalloc of size [%10d]", (int)size); */
   block = get_first_fit(size);
   if (block == NULL)
     block = new_alloc(size);
   if (block == NULL)
-    return (NULL);
+    {
+      pthread_mutex_unlock(&mutex);
+      return (NULL);
+    }
   block->free = FALSE;
   split_block(block, size);
-  /* printf(" return %p\033[00m\n", block->data); */
   if (dbg_start > DBG_START)
     dump_block();
+  pthread_mutex_unlock(&mutex);
   return (block->data);
 }

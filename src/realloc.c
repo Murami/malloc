@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:28:13 2014 anthony guerot
-** Last update Thu Feb 13 16:41:38 2014 guerot_a
+** Last update Thu Feb 13 17:57:41 2014 pinon
 */
 
 #include "malloc.h"
@@ -16,7 +16,6 @@ void*		realloc(void *ptr, size_t size)
   void*		new;
   t_block*	block;
 
-  /* printf("realloc\n"); */
   block = (void*)((char*)ptr - HEADER_SIZE);
   if (ptr == NULL)
     return (malloc(size));
@@ -29,8 +28,8 @@ void*		realloc(void *ptr, size_t size)
   min_size = (min_size > size) ? size : min_size;
   free(ptr);
   new = malloc(size);
-  /* printf("%p -- %d\n", new, (int)size); */
   if (new == NULL)
     return (NULL);
-  return (memmove(new, ptr, min_size));
+  new = memmove(new, ptr, min_size);
+  return (new);
 }
