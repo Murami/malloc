@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:28:13 2014 anthony guerot
-** Last update Fri Feb  7 14:40:40 2014 pinon
+** Last update Fri Feb  7 15:22:49 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -21,20 +21,25 @@ void*		realloc(void *ptr, size_t size)
     return (malloc(size));
   if (size == 0)
     {
+      printf("fuck\n");
       free(ptr);
       return (NULL);
     }
   block = get_block(ptr);
   if (block == NULL)
-    return (NULL);
-  /* if (extand_block(block, size)) */
-  /*   return (block); */
+    {
+      printf("warning: realloc invalid pointer\n");
+      return (NULL);
+    }
   old_size = block->size;
   if ((int)size < old_size)
     old_size = size;
-  printf("-> %d <-|", old_size);
-  printf("-> %d <-\033[00m \n", (int)size);
-  block = malloc(size);
+  if ((block = malloc(size)) == NULL)
+    {
+      printf("ERR\n");
+      return (NULL);
+    }
+  printf("WTF?!\n");
   memcpy(block->data, ptr, old_size);
   free(ptr);
   if (dbg_start > DBG_START)

@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:29:40 2014 anthony guerot
-** Last update Fri Feb  7 14:19:06 2014 guerot_a
+** Last update Fri Feb  7 15:22:35 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -47,7 +47,7 @@ void		free(void *ptr)
   block = get_block(ptr);
   if (block == NULL)
     {
-      printf("warning: invalid pointer\n");
+      printf("warning: free invalid pointer\n");
       return;
     }
   block->free = TRUE;
