@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:28:13 2014 anthony guerot
-** Last update Thu Feb 13 17:57:41 2014 pinon
+** Last update Thu Feb 13 18:13:56 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -30,6 +30,5 @@ void*		realloc(void *ptr, size_t size)
   new = malloc(size);
   if (new == NULL)
     return (NULL);
-  new = memmove(new, ptr, min_size);
-  return (new);
+  return (memmove(new, ptr, min_size));
 }

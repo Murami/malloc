@@ -5,7 +5,7 @@
 ## Login   <pinon_a@epitech.net>
 ## 
 ## Started on  Mon Feb  3 15:40:11 2014 pinon
-## Last update Thu Feb  6 12:17:24 2014 guerot_a
+## Last update Thu Feb 13 18:24:34 2014 guerot_a
 ##
 
 LIBNAME=	libmy_malloc_$(HOSTTYPE).so
@@ -19,7 +19,8 @@ SRC=		src/malloc.c		\
 		src/raise.c		\
 		src/split_block.c	\
 		src/dump_block.c	\
-		src/show_mem.c
+		src/show_mem.c		\
+		src/calloc.c
 
 OBJ=		$(SRC:.c=.o)
 

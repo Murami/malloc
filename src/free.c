@@ -35,8 +35,8 @@ void		free(void *ptr)
 {
   t_block*	block;
 
+  /* fprintf(stderr, "try to free : %p\n", ptr); */
   pthread_mutex_lock(&mutex);
-  dbg_start++;
   if (ptr == NULL)
     {
       pthread_mutex_unlock(&mutex);
