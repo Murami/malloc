@@ -35,7 +35,6 @@ void		free(void *ptr)
 {
   t_block*	block;
 
-  /* fprintf(stderr, "try to free : %p\n", ptr); */
   pthread_mutex_lock(&mutex);
   if (ptr == NULL)
     {
@@ -52,7 +51,5 @@ void		free(void *ptr)
   block = (void*)((char*)ptr - HEADER_SIZE);
   block->free = TRUE;
   merge_block(block);
-  if (dbg_start > DBG_START)
-    dump_block();
   pthread_mutex_unlock(&mutex);
 }

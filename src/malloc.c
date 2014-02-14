@@ -5,13 +5,12 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Thu Feb 13 18:25:03 2014 guerot_a
+** Last update Fri Feb 14 16:34:55 2014 guerot_a
 */
 
 #include "malloc.h"
 
 t_block		blocks_list	= {&blocks_list, &blocks_list, 0, FALSE, {0}};
-int		dbg_start	= 0;
 pthread_mutex_t	mutex		= PTHREAD_MUTEX_INITIALIZER;
 
 size_t		align_size(size_t size)
@@ -67,9 +66,6 @@ void*		malloc(size_t size)
     }
   block->free = FALSE;
   split_block(block, size);
-  if (dbg_start > DBG_START)
-    dump_block();
   pthread_mutex_unlock(&mutex);
-  /* fprintf(stderr, "malloced : %p\n", block->data); */
   return (block->data);
 }

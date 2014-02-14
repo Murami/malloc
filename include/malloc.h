@@ -5,7 +5,7 @@
 ** Login   <pinon_a@epitech.net>
 **
 ** Started on  Thu Feb 13 15:43:31 2014 pinon
-** Last update Thu Feb 13 17:51:39 2014 pinon
+** Last update Fri Feb 14 16:33:58 2014 guerot_a
 */
 
 #define _BSD_SOURCE
@@ -14,14 +14,8 @@
 #include <string.h>
 #include <pthread.h>
 
-/*
-** TODO : shrink_heap
-*/
-
 #define FALSE 	0
 #define TRUE	1
-
-#define DBG_START	99999999
 
 #define raise(msg) (_raise(msg, __FILE__, __LINE__))
 
@@ -36,7 +30,6 @@ typedef struct __attribute__((packed))	s_block
 
 #define HEADER_SIZE	((int)(sizeof(t_block) - 1))
 
-extern int		dbg_start;
 extern t_block		blocks_list;
 extern pthread_mutex_t	mutex;
 
