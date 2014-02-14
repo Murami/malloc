@@ -41,14 +41,14 @@ void		free(void *ptr)
       pthread_mutex_unlock(&mutex);
       return;
     }
-  /*block = get_block(ptr);
+  block = get_block(ptr);
   if (block == NULL)
     {
       printf("warning: free invalid pointer\n");
       pthread_mutex_unlock(&mutex);
       return;
-      }*/
-  block = (void*)((char*)ptr - HEADER_SIZE);
+    }
+  /* block = (void*)((char*)ptr - HEADER_SIZE); */
   block->free = TRUE;
   merge_block(block);
   pthread_mutex_unlock(&mutex);

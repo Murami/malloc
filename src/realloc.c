@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:28:13 2014 anthony guerot
-** Last update Thu Feb 13 18:13:56 2014 guerot_a
+** Last update Fri Feb 14 16:43:25 2014 guerot_a
 */
 
 #include "malloc.h"
@@ -16,12 +16,18 @@ void*		realloc(void *ptr, size_t size)
   void*		new;
   t_block*	block;
 
-  block = (void*)((char*)ptr - HEADER_SIZE);
   if (ptr == NULL)
     return (malloc(size));
   if (size == 0)
     {
       free(ptr);
+      return (NULL);
+    }
+  /* block = (void*)((char*)ptr - HEADER_SIZE); */
+  block = get_block(ptr);
+  if (block == NULL)
+    {
+      printf("warning: realloc invalid pointer\n");
       return (NULL);
     }
   min_size = block->size;
