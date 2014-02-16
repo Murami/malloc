@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:18:13 2014 anthony guerot
-** Last update Sun Feb 16 17:58:49 2014 pinon
+** Last update Sun Feb 16 18:11:01 2014 pinon
 */
 
 #include "malloc.h"
@@ -55,7 +55,6 @@ void*		malloc(size_t size)
 {
   t_block*	block;
 
-  show_alloc_mem();
   pthread_mutex_lock(&g_mutex);
   block = get_first_fit(size);
   if (block == NULL)
