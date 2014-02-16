@@ -5,7 +5,7 @@
 ** Login   <pinon_a@epitech.net>
 **
 ** Started on  Thu Feb 13 15:43:31 2014 pinon
-** Last update Sun Feb 16 14:11:12 2014 pinon
+** Last update Sun Feb 16 17:55:01 2014 pinon
 */
 
 #ifndef MALLOC_H_
@@ -20,8 +20,6 @@
 # define	FALSE		0
 # define	TRUE		1
 
-# define	DBG_START	99999999
-
 # define	raise(msg)	(_raise(msg, __FILE__, __LINE__))
 
 typedef struct __attribute__((packed))	s_block
@@ -35,9 +33,8 @@ typedef struct __attribute__((packed))	s_block
 
 # define	HEADER_SIZE	((int)(sizeof(t_block) - 1))
 
-extern		int		dbg_start;
-extern		t_block		blocks_list;
-extern		pthread_mutex_t	mutex;
+extern		t_block		g_blocks_list;
+extern		pthread_mutex_t	g_mutex;
 
 t_block*	get_block(void *data);
 void		_free(void *ptr);
@@ -49,5 +46,6 @@ void		free(void *ptr);
 void*		malloc(size_t size);
 void*		realloc(void *ptr, size_t size);
 void*		calloc(size_t nmenb, size_t size);
+void		show_alloc_mem();
 
 #endif

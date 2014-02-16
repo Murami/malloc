@@ -5,7 +5,7 @@
 ** Login   <guerot_a@epitech.net>
 **
 ** Started on  Wed Feb  5 14:28:13 2014 anthony guerot
-** Last update Fri Feb 14 16:43:25 2014 guerot_a
+** Last update Sun Feb 16 18:04:46 2014 pinon
 */
 
 #include "malloc.h"
@@ -23,7 +23,6 @@ void*		realloc(void *ptr, size_t size)
       free(ptr);
       return (NULL);
     }
-  /* block = (void*)((char*)ptr - HEADER_SIZE); */
   block = get_block(ptr);
   if (block == NULL)
     {

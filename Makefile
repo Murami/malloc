@@ -5,7 +5,7 @@
 ## Login   <pinon_a@epitech.net>
 ## 
 ## Started on  Mon Feb  3 15:40:11 2014 pinon
-## Last update Thu Feb 13 18:24:34 2014 guerot_a
+## Last update Sun Feb 16 17:56:57 2014 pinon
 ##
 
 LIBNAME=	libmy_malloc_$(HOSTTYPE).so
